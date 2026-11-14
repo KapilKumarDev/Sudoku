@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Sudoku</h1>
+        </header>
+
+        <main class="game-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="difficulty">Difficulty</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <button id="generate-btn">New Game</button>
+            </div>
+
+            <div class="board-wrapper">
+                <div id="sudoku-board" class="sudoku-board"></div>
+            </div>
+
+            <div class="controls">
+                <button id="solve-btn">Solve For Me</button>
+                <button id="hint-btn">Hint (3 left)</button>
+                <button id="clear-btn">Clear Board</button>
+                <div class="stat-row">
+                    <div class="stat errors">
+                        <span id="error-count">0</span>
+                        Errors / 3
+                    </div>
+                    <div class="stat hints">
+                        <span id="hint-count">3</span>
+                        Hints left
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="win-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <h2 id="modal-title">You Won!</h2>
+            <div class="modal-buttons">
+                <button id="modal-replay-btn">Replay</button>
+                <button id="modal-new-btn">New Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
