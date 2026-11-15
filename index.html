@@ -1,84 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#e6e4df">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#e6e4df" />
     <title>Sudoku</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="sudoku.js" defer></script>
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <svg hidden aria-hidden="true">
-        <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></symbol>
-        <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
-        <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3"/></symbol>
-        <symbol id="i-erase" viewBox="0 0 24 24"><path d="M4 20h16M7 16 3 12 12 3l8 8-6 6z"/></symbol>
-        <symbol id="i-notes" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/></symbol>
-        <symbol id="i-hint" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11v2h6v-2a6 6 0 0 0-3-11z"/></symbol>
+      <symbol id="i-theme" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor" />
+      </symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24">
+        <path d="M8 5v14M16 5v14" />
+      </symbol>
+      <symbol id="i-undo" viewBox="0 0 24 24">
+        <path d="M9 14 4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3" />
+      </symbol>
+      <symbol id="i-erase" viewBox="0 0 24 24">
+        <path d="M4 20h16M7 16 3 12 12 3l8 8-6 6z" />
+      </symbol>
+      <symbol id="i-notes" viewBox="0 0 24 24">
+        <path d="M4 20l1-4L16 5l3 3L8 19z" />
+      </symbol>
+      <symbol id="i-hint" viewBox="0 0 24 24">
+        <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11v2h6v-2a6 6 0 0 0-3-11z" />
+      </symbol>
     </svg>
 
     <nav>
-        <h1 class="logo">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="1.5" y="1.5" width="21" height="21" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M8.5 2v20M15.5 2v20M2 8.5h20M2 15.5h20" stroke="currentColor" stroke-width="1" opacity=".5"/>
-                <rect class="logo-core" x="9" y="9" width="6" height="6" rx="1.5"/>
-            </svg>
-            Sudoku
-        </h1>
-        <div class="nav-actions">
-            <button id="theme" class="round" aria-label="Toggle theme"><svg class="icon"><use href="#i-theme"/></svg></button>
-            <button id="new-game" class="primary" aria-haspopup="dialog">New game</button>
-        </div>
+      <h1 class="logo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect
+            x="1.5"
+            y="1.5"
+            width="21"
+            height="21"
+            rx="5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <path
+            d="M8.5 2v20M15.5 2v20M2 8.5h20M2 15.5h20"
+            stroke="currentColor"
+            stroke-width="1"
+            opacity=".5"
+          />
+          <rect class="logo-core" x="9" y="9" width="6" height="6" rx="1.5" />
+        </svg>
+        Sudoku
+      </h1>
+      <div class="nav-actions">
+        <button id="theme" class="round" aria-label="Toggle theme">
+          <svg class="icon"><use href="#i-theme" /></svg>
+        </button>
+        <button id="new-game" class="primary" aria-haspopup="dialog">
+          New game
+        </button>
+      </div>
     </nav>
 
     <main>
-        <div class="stats">
-            <div><span>Level</span><b id="level"></b></div>
-            <div><span>Mistakes</span><b id="mistakes"></b></div>
-            <div class="clock">
-                <div><span>Time</span><b id="time"></b></div>
-                <button id="pause" class="round" aria-label="Pause"><svg class="icon"><use href="#i-pause"/></svg></button>
-            </div>
+      <div class="stats">
+        <div><span>Level</span><b id="level"></b></div>
+        <div><span>Mistakes</span><b id="mistakes"></b></div>
+        <div class="clock">
+          <div><span>Time</span><b id="time"></b></div>
+          <button id="pause" class="round" aria-label="Pause">
+            <svg class="icon"><use href="#i-pause" /></svg>
+          </button>
         </div>
+      </div>
 
-        <div class="stage">
-            <div id="board" class="board" role="group" aria-label="Sudoku board"></div>
-            <div id="paused" class="paused" hidden>
-                <svg class="icon"><use href="#i-pause"/></svg>
-                Paused
-                <button id="resume" class="primary">Resume</button>
-            </div>
+      <div class="stage">
+        <div
+          id="board"
+          class="board"
+          role="group"
+          aria-label="Sudoku board"
+        ></div>
+        <div id="paused" class="paused" hidden>
+          <svg class="icon"><use href="#i-pause" /></svg>
+          Paused
+          <button id="resume" class="primary">Resume</button>
         </div>
+      </div>
 
-        <div class="actions">
-            <button id="undo"><svg class="icon"><use href="#i-undo"/></svg>Undo</button>
-            <button id="erase"><svg class="icon"><use href="#i-erase"/></svg>Clear</button>
-            <button id="notes" aria-pressed="false"><svg class="icon"><use href="#i-notes"/></svg>Notes</button>
-            <button id="hint"><svg class="icon"><use href="#i-hint"/></svg><span>Hint (<span id="hints"></span>)</span></button>
-        </div>
+      <div class="actions">
+        <button id="undo">
+          <svg class="icon"><use href="#i-undo" /></svg>Undo
+        </button>
+        <button id="erase">
+          <svg class="icon"><use href="#i-erase" /></svg>Clear
+        </button>
+        <button id="notes" aria-pressed="false">
+          <svg class="icon"><use href="#i-notes" /></svg>Notes
+        </button>
+        <button id="hint">
+          <svg class="icon"><use href="#i-hint" /></svg
+          ><span>Hint (<span id="hints"></span>)</span>
+        </button>
+      </div>
 
-        <div id="pad" class="pad"></div>
+      <div id="pad" class="pad"></div>
     </main>
 
     <dialog id="menu" aria-label="New game">
-        <div class="card">
-            <p>Select difficulty</p>
-            <div id="levels" class="levels"></div>
-            <button id="restart" class="outline">Restart</button>
-            <button id="solve" class="outline">Show solution</button>
-        </div>
+      <div class="card">
+        <p>Select difficulty</p>
+        <div id="levels" class="levels"></div>
+        <button id="restart" class="outline">Restart</button>
+        <button id="solve" class="outline">Show solution</button>
+      </div>
     </dialog>
 
     <dialog id="result" aria-labelledby="result-title">
-        <div class="card center">
-            <h2 id="result-title"></h2>
-            <p id="result-detail" class="detail"></p>
-            <button id="result-restart" class="soft">Restart</button>
-            <button id="result-new" class="primary">New game</button>
-        </div>
+      <div class="card center">
+        <h2 id="result-title"></h2>
+        <p id="result-detail" class="detail"></p>
+        <button id="result-restart" class="soft">Restart</button>
+        <button id="result-new" class="primary">New game</button>
+      </div>
     </dialog>
-</body>
+  </body>
 </html>
