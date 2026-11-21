@@ -18,6 +18,8 @@
         <symbol id="i-erase" viewBox="0 0 24 24"><path d="M4 20h16M7 16 3 12 12 3l8 8-6 6z"/></symbol>
         <symbol id="i-notes" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/></symbol>
         <symbol id="i-hint" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11v2h6v-2a6 6 0 0 0-3-11z"/></symbol>
+        <symbol id="i-restart" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
     </svg>
 
     <nav>
@@ -54,24 +56,24 @@
             </div>
         </div>
 
-        <div class="dock">
-            <div class="actions">
-                <button id="undo"><svg class="icon"><use href="#i-undo"/></svg>Undo</button>
-                <button id="erase"><svg class="icon"><use href="#i-erase"/></svg>Clear</button>
-                <button id="notes" aria-pressed="false"><svg class="icon"><use href="#i-notes"/></svg>Notes</button>
-                <button id="hint"><svg class="icon"><use href="#i-hint"/></svg><span>Hint (<span id="hints"></span>)</span></button>
-            </div>
-            <div id="pad" class="pad"></div>
-            <div id="result" class="result" hidden>
-                <h2 id="result-title"></h2>
-                <p id="result-detail"></p>
-                <button id="result-new" class="primary">New game</button>
-            </div>
+        <div class="actions">
+            <button id="undo"><svg class="icon"><use href="#i-undo"/></svg>Undo</button>
+            <button id="erase"><svg class="icon"><use href="#i-erase"/></svg>Clear</button>
+            <button id="notes" aria-pressed="false"><svg class="icon"><use href="#i-notes"/></svg>Notes</button>
+            <button id="hint"><svg class="icon"><use href="#i-hint"/></svg><span>Hint (<span id="hints"></span>)</span></button>
+            <button id="restart"><svg class="icon"><use href="#i-restart"/></svg>Restart</button>
+            <button id="solve"><svg class="icon"><use href="#i-eye"/></svg>Solution</button>
         </div>
 
-        <div class="extras">
-            <button id="restart" class="outline">Restart</button>
-            <button id="solve" class="outline">Show solution</button>
+        <div class="keys">
+            <div id="pad" class="pad"></div>
+            <div id="result" class="result" hidden>
+                <div>
+                    <h2 id="result-title"></h2>
+                    <p id="result-detail"></p>
+                </div>
+                <button id="result-new" class="primary">New game</button>
+            </div>
         </div>
     </main>
 
